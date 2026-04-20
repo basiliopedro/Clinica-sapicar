@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centro Médico Sapicar — Benguela, Angola</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --verde:       #1b5e20;
+  --verde-med:   #2e7d32;
+  --verde-light: #43a047;
+  --verde-pale:  #e8f5e9;
+  --fundo:       #f4f7f4;
+  --branco:      #ffffff;
+  --texto:       #1a1f18;
+  --texto-sec:   #5a6655;
+  --borda:       #dde8dc;
+  --sombra:      0 4px 24px rgba(27,94,32,.10);
+  --sombra-hover:0 10px 40px rgba(27,94,32,.18);
+  --radius:      14px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--fundo);
+  color: var(--texto);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── HEADER ── */
+header {
+  background: var(--verde-med);
+  position: sticky; top: 0; z-index: 200;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 2px 16px rgba(27,94,32,.25);
+}
+.header-inner {
+  max-width: 1140px; margin: 0 auto;
+  padding: 0 28px; height: 70px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo-img { height: 38px; width: auto; display: block; border-radius: 6px; }
+.logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+.logo-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.05rem; color: #fff; letter-spacing: -.2px;
+}
+.logo-sub {
+  font-size: .62rem; font-weight: 500;
+  color: rgba(255,255,255,.65);
+  letter-spacing: .5px; text-transform: uppercase;
+}
+nav { display: flex; align-items: center; gap: 32px; }
+nav a {
+  color: rgba(255,255,255,.82); text-decoration: none;
+  font-size: .82rem; font-weight: 500;
+  transition: color .2s; letter-spacing: .1px;
+}
+nav a:hover { color: #fff; }
+.nav-cta {
+  background: rgba(255,255,255,.18); color: #fff !important;
+  border: 1px solid rgba(255,255,255,.3);
+  padding: 9px 22px; border-radius: 8px;
+  font-weight: 600 !important; font-size: .82rem !important;
+  transition: background .2s, transform .15s !important;
+}
+.nav-cta:hover { background: rgba(255,255,255,.28) !important; transform: translateY(-1px); }
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; background: none; border: none; padding: 6px;
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: #fff; border-radius: 2px; transition: all .25s;
+}
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-nav {
+  display: none; flex-direction: column;
+  background: var(--verde);
+  border-top: 1px solid rgba(255,255,255,.1);
+  padding: 16px 28px 20px; gap: 16px;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  color: rgba(255,255,255,.82); text-decoration: none;
+  font-size: .92rem; font-weight: 500;
+}
+.mobile-nav a.mobile-cta {
+  background: rgba(255,255,255,.18); color: #fff;
+  padding: 12px 20px; border-radius: 8px;
+  text-align: center; font-weight: 600;
+  border: 1px solid rgba(255,255,255,.25);
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  /* Curvatura nos cantos inferiores */
+  border-radius: 0 0 32px 32px;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://raw.githubusercontent.com/basiliopedro/clinica-sapicar/main/img/hero-sapicar.jpg');
+  background-size: cover; background-position: center;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(27,94,32,.60) 0%,
+    rgba(27,94,32,.75) 100%
+  );
+}
+.hero-inner {
+  position: relative; z-index: 1;
+  max-width: 1140px; margin: 0 auto;
+  padding: 0 28px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0; min-height: 520px; align-items: stretch;
+}
+.hero-content {
+  display: flex; flex-direction: column;
+  justify-content: center; padding: 72px 56px 72px 0;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 100px;
+  padding: 6px 14px; margin-bottom: 22px;
+  width: fit-content;
+}
+.hero-badge span {
+  font-size: .68rem; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase; color: #fff;
+}
+.hero-badge-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #69f0ae; animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: .5; transform: scale(.8); }
+}
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: #fff; line-height: 1.2;
+  margin-bottom: 16px; letter-spacing: -.3px;
+}
+.hero h1 em { font-style: italic; color: #a5d6a7; }
+.hero-sub {
+  color: rgba(255,255,255,.72);
+  font-size: .92rem; font-weight: 300;
+  max-width: 420px; line-height: 1.8; margin-bottom: 32px;
+}
+.btn-hero {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; color: var(--verde);
+  font-family: 'Poppins', sans-serif;
+  font-size: .78rem; font-weight: 600;
+  padding: 13px 28px; border-radius: 8px;
+  text-decoration: none; width: fit-content;
+  box-shadow: 0 4px 16px rgba(0,0,0,.15);
+  transition: transform .2s, box-shadow .2s;
+}
+.btn-hero:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+.hero-image-col {
+  display: flex; align-items: flex-end;
+  justify-content: flex-end; padding: 32px 0 0;
+  position: relative;
+}
+.hero-image-col img {
+  height: 420px; width: auto;
+  object-fit: cover; border-radius: 14px 14px 0 0;
+  box-shadow: 0 -8px 40px rgba(0,0,0,.2);
+}
+
+/* ── FUNDO COM IMAGEM CLÍNICA DESFOCADA ── */
+.clinica-bg {
+  position: relative;
+  background-image: url('https://raw.githubusercontent.com/basiliopedro/clinica-sapicar/main/img/hero-sapicar.jpg');
+  background-size: cover; background-position: center;
+  background-attachment: fixed;
+}
+.clinica-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(244,247,244,.87);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.clinica-bg > * { position: relative; z-index: 1; }
+
+/* ── SECÇÕES ── */
+section { padding: 80px 28px; }
+.container { max-width: 1140px; margin: 0 auto; }
+.section-tag {
+  font-size: .68rem; font-weight: 600;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--verde-light); margin-bottom: 10px; display: block;
+}
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  color: var(--verde); margin-bottom: 14px; letter-spacing: -.2px;
+}
+.section-sub {
+  font-size: .9rem; font-weight: 300;
+  color: var(--texto-sec); max-width: 500px; line-height: 1.8;
+}
+.section-divider {
+  width: 36px; height: 2px;
+  background: var(--verde-light);
+  margin-bottom: 48px; border-radius: 2px;
+}
+
+/* ── CARDS DE SERVIÇOS — estilo hotel ── */
+.serv-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.serv-card {
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  transition: transform .3s ease, box-shadow .3s ease;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .5s ease, transform .5s ease, box-shadow .3s;
+}
+.serv-card.visible { opacity: 1; transform: translateY(0); }
+.serv-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: var(--sombra-hover);
+}
+/* Imagem ocupa topo do card — completa, sem corte */
+.serv-card-img {
+  width: 100%; height: 200px;
+  object-fit: cover; object-position: center;
+  display: block;
+  /* Degradê suave na parte de baixo da imagem */
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+.serv-card-body {
+  padding: 16px 20px 22px;
+}
+.serv-card-body h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: .95rem; font-weight: 500;
+  color: var(--texto); margin-bottom: 6px;
+}
+.serv-card-body p {
+  font-size: .78rem; font-weight: 300;
+  color: var(--texto-sec); line-height: 1.7;
+  margin-bottom: 16px;
+}
+.btn-wa {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--verde-med); color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: .75rem; font-weight: 600;
+  padding: 10px 16px; border-radius: 8px;
+  text-decoration: none; width: 100%;
+  box-shadow: 0 3px 12px rgba(27,94,32,.2);
+  transition: background .2s, transform .15s;
+}
+.btn-wa:hover { background: var(--verde); transform: translateY(-1px); }
+
+/* ── LOCALIZAÇÃO ── */
+#localizacao { background: var(--fundo); }
+.loc-grid {
+  display: grid; grid-template-columns: 1fr 1.6fr;
+  gap: 40px; align-items: start;
+}
+.loc-info { display: flex; flex-direction: column; gap: 26px; }
+.loc-item { display: flex; align-items: flex-start; gap: 16px; }
+.loc-item-icon {
+  width: 40px; height: 40px; border-radius: 8px;
+  border: 1px solid var(--borda);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--verde); flex-shrink: 0;
+}
+.loc-item-text h4 {
+  font-size: .75rem; font-weight: 600;
+  color: var(--verde); margin-bottom: 3px; letter-spacing: .5px;
+}
+.loc-item-text p,
+.loc-item-text a {
+  font-size: .85rem; font-weight: 300;
+  color: var(--texto-sec); text-decoration: none;
+  display: block; line-height: 1.7; transition: color .2s;
+}
+.loc-item-text a:hover { color: var(--verde); }
+.loc-map {
+  border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--borda); box-shadow: var(--sombra);
+}
+.loc-map iframe { width: 100%; height: 340px; display: block; border: none; }
+
+/* ── CONTACTO ── */
+#contacto {
+  background: var(--verde);
+  padding: 72px 28px;
+}
+.contacto-inner {
+  max-width: 1140px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.2fr;
+  gap: 56px; align-items: center;
+}
+.contacto-text .section-tag { color: rgba(255,255,255,.5); }
+.contacto-text .section-title { color: #fff; }
+.contacto-text .section-sub { color: rgba(255,255,255,.65); }
+.contacto-cards { display: flex; flex-direction: column; gap: 14px; }
+.contact-card {
+  display: flex; align-items: center; gap: 16px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 10px; padding: 16px 20px;
+  text-decoration: none; transition: background .2s, transform .2s;
+}
+.contact-card:hover { background: rgba(255,255,255,.14); transform: translateX(4px); }
+.contact-icon {
+  width: 40px; height: 40px; border-radius: 8px;
+  background: rgba(255,255,255,.15);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; flex-shrink: 0;
+}
+.contact-details { flex: 1; }
+.contact-type {
+  font-size: .65rem; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,.5); margin-bottom: 2px;
+}
+.contact-number { font-size: .92rem; font-weight: 500; color: #fff; }
+.contact-arrow { color: rgba(255,255,255,.4); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--verde);
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.footer-inner {
+  max-width: 1140px; margin: 0 auto;
+  padding: 32px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-logo img { height: 36px; width: auto; border-radius: 6px; }
+.footer-mid p,
+.footer-mid a {
+  font-size: .8rem; font-weight: 300;
+  color: rgba(255,255,255,.5); text-decoration: none;
+  display: block; line-height: 1.7;
+}
+.footer-mid a:hover { color: rgba(255,255,255,.85); }
+.footer-right p {
+  font-size: .75rem; font-weight: 300;
+  color: rgba(255,255,255,.35); text-align: right;
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { display: none; }
+  .hamburger { display: flex; }
+  .hero-inner { grid-template-columns: 1fr; min-height: auto; }
+  .hero-image-col { display: none; }
+  .hero-content { padding: 72px 0 56px; }
+  .serv-grid { grid-template-columns: repeat(2, 1fr); }
+  .loc-grid { grid-template-columns: 1fr; }
+  .contacto-inner { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .footer-right p { text-align: left; }
+}
+@media (max-width: 540px) {
+  .serv-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <img
+        class="logo-img"
+        src="https://raw.githubusercontent.com/basiliopedro/clinica-sapicar/main/img/logo-sapicar.png"
+        alt="Centro Médico Sapicar"
+      >
+      <div class="logo-text">
+        <span class="logo-name">Sapicar</span>
+        <span class="logo-sub">Centro Médico · Benguela</span>
+      </div>
+    </a>
+    <nav>
+      <a href="#servicos">Serviços</a>
+      <a href="#localizacao">Localização</a>
+      <a href="#contacto" class="nav-cta">Marcar Consulta</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#servicos" onclick="closeMobileNav()">Serviços</a>
+    <a href="#localizacao" onclick="closeMobileNav()">Localização</a>
+    <a href="#contacto" class="mobile-cta" onclick="closeMobileNav()">Marcar Consulta</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        <span>Aberto 24 horas · 7 dias</span>
+      </div>
+      <h1>Cuidados de saúde<br>que <em>transformam</em> vidas</h1>
+      <p class="hero-sub">O Centro Médico Sapicar oferece atendimento especializado com qualidade, rigor e humanidade. Em Benguela, ao seu serviço todos os dias.</p>
+      <a href="#contacto" class="btn-hero">
+        <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Marcar consulta
+      </a>
+    </div>
+    <div class="hero-image-col">
+      <img
+        src="https://raw.githubusercontent.com/basiliopedro/clinica-sapicar/main/img/hero-sapicar.jpg"
+        alt="Centro Médico Sapicar"
+      >
+    </div>
+  </div>
+</div>
+
+<!-- SERVIÇOS — sobre fundo clínico desfocado -->
+<div class="clinica-bg">
+  <section id="servicos">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-tag">Especialidades</span>
+        <h2 class="section-title">Os nossos serviços</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="serv-grid">
+
+        <!-- 1. Cardiologia -->
+        <div class="serv-card" data-delay="0">
+          <img
+            class="serv-card-img"
+            src="https://raw.githubusercontent.com/basiliopedro/clinica-sapicar/main/img/cardiologia.jpg"
+            alt="Cardiologia"
+          >
+          <div class="serv-card-body">
+            <h3>Cardiologia</h3>
+            <p>Diagnóstico e tratamento de doenças do coração e do sistema cardiovascular.</p>
+            <a href="https://wa.me/244931850810?text=Olá%2C%20gostaria%20de%20marcar%20consulta%20de%20Cardiologia" target="_blank" class="btn-wa">
+              <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Marcar consulta
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. Carga Viral -->
+        <div class="serv-card" data-delay="80">
+          <img
+            class="serv-card-img"
+            src="https://raw.githubusercontent.com/basiliopedro/clinica-sapicar/main/img/carga-viral.jpg"
+            alt="Carga Viral"
+          >
+          <div class="serv-card-body">
+            <h3>Carga Viral</h3>
+            <p>Análises laboratoriais para monitorização e controlo de infecções virais.</p>
+            <a href="https://wa.me/244931850810?text=Olá%2C%20gostaria%20de%20informações%20sobre%20Carga%20Viral" target="_blank" class="btn-wa">
+              <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Saber mais
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Ecografia -->
+        <div class="serv-card" data-delay="160">
+          <img
+            class="serv-card-img"
+            src="https://raw.githubusercontent.com/basiliopedro/clinica-sapicar/main/img/ecografia.jpg"
+            alt="Ecografia"
+          >
+          <div class="serv-card-body">
+            <h3>Ecografia</h3>
+            <p>Exames de imagem por ultrassom para diagnóstico abdominal, obstétrico e vascular.</p>
+            <a href="https://wa.me/244931850810?text=Olá%2C%20gostaria%20de%20marcar%20uma%20Ecografia" target="_blank" class="btn-wa">
+              <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Marcar exame
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. Estomatologia -->
+        <div class="serv-card" data-delay="0">
+          <img
+            class="serv-card-img"
+            src="https://raw.githubusercontent.com/basiliopedro/clinica-sapicar/main/img/estomatologia.png"
+            alt="Estomatologia"
+          >
+          <div class="serv-card-body">
+            <h3>Estomatologia</h3>
+            <p>Saúde oral, diagnóstico e tratamentos dentários especializados.</p>
+            <a href="https://wa.me/244931850810?text=Olá%2C%20gostaria%20de%20marcar%20consulta%20de%20Estomatologia" target="_blank" class="btn-wa">
+              <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Marcar consulta
+            </a>
+          </div>
+        </div>
+
+        <!-- 5. Fisioterapia -->
+        <div class="serv-card" data-delay="80">
+          <img
+            class="serv-card-img"
+            src="https://raw.githubusercontent.com/basiliopedro/clinica-sapicar/main/img/fisioterapia.jpg"
+            alt="Fisioterapia"
+          >
+          <div class="serv-card-body">
+            <h3>Fisioterapia</h3>
+            <p>Reabilitação física, tratamento de lesões musculares e ortopédicas.</p>
+            <a href="https://wa.me/244931850810?text=Olá%2C%20gostaria%20de%20marcar%20sessão%20de%20Fisioterapia" target="_blank" class="btn-wa">
+              <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Marcar sessão
+            </a>
+          </div>
+        </div>
+
+        <!-- 6. Ginecologia -->
+        <div class="serv-card" data-delay="160">
+          <img
+            class="serv-card-img"
+            src="https://raw.githubusercontent.com/basiliopedro/clinica-sapicar/main/img/genecologia.png"
+            alt="Ginecologia"
+          >
+          <div class="serv-card-body">
+            <h3>Ginecologia</h3>
+            <p>Saúde feminina, rastreios, acompanhamento ginecológico e cuidados preventivos.</p>
+            <a href="https://wa.me/244931850810?text=Olá%2C%20gostaria%20de%20marcar%20consulta%20de%20Ginecologia" target="_blank" class="btn-wa">
+              <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Marcar consulta
+            </a>
+          </div>
+        </div>
+
+        <!-- 7. Maternidade -->
+        <div class="serv-card" data-delay="0">
+          <img
+            class="serv-card-img"
+            src="https://raw.githubusercontent.com/basiliopedro/clinica-sapicar/main/img/maternidade.jpg"
+            alt="Maternidade"
+          >
+          <div class="serv-card-body">
+            <h3>Maternidade</h3>
+            <p>Acompanhamento pré-natal, parto assistido e cuidados pós-parto.</p>
+            <a href="https://wa.me/244931850810?text=Olá%2C%20gostaria%20de%20informações%20sobre%20Maternidade" target="_blank" class="btn-wa">
+              <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Saber mais
+            </a>
+          </div>
+        </div>
+
+        <!-- 8. Oftalmologia -->
+        <div class="serv-card" data-delay="80">
+          <img
+            class="serv-card-img"
+            src="https://raw.githubusercontent.com/basiliopedro/clinica-sapicar/main/img/oftamologia.jpg"
+            alt="Oftalmologia"
+          >
+          <div class="serv-card-body">
+            <h3>Oftalmologia</h3>
+            <p>Consultas, diagnóstico e tratamento de patologias dos olhos e da visão.</p>
+            <a href="https://wa.me/244931850810?text=Olá%2C%20gostaria%20de%20marcar%20consulta%20de%20Oftalmologia" target="_blank" class="btn-wa">
+              <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Marcar consulta
+            </a>
+          </div>
+        </div>
+
+        <!-- 9. Pediatria -->
+        <div class="serv-card" data-delay="160">
+          <img
+            class="serv-card-img"
+            src="https://raw.githubusercontent.com/basiliopedro/clinica-sapicar/main/img/pediatria.jpg"
+            alt="Pediatria"
+          >
+          <div class="serv-card-body">
+            <h3>Pediatria</h3>
+            <p>Cuidados médicos especializados para crianças desde o nascimento até à adolescência.</p>
+            <a href="https://wa.me/244931850810?text=Olá%2C%20gostaria%20de%20marcar%20consulta%20de%20Pediatria" target="_blank" class="btn-wa">
+              <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Marcar consulta
+            </a>
+          </div>
+        </div>
+
+        <!-- 10. Raio-X -->
+        <div class="serv-card" data-delay="0">
+          <img
+            class="serv-card-img"
+            src="https://raw.githubusercontent.com/basiliopedro/clinica-sapicar/main/img/raiox.jpg"
+            alt="Raio-X"
+          >
+          <div class="serv-card-body">
+            <h3>Raio-X</h3>
+            <p>Exames radiológicos digitais para diagnóstico ósseo, pulmonar e abdominal.</p>
+            <a href="https://wa.me/244931850810?text=Olá%2C%20gostaria%20de%20marcar%20um%20exame%20de%20Raio-X" target="_blank" class="btn-wa">
+              <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Marcar exame
+            </a>
+          </div>
+        </div>
+
+        <!-- 11. Urologia -->
+        <div class="serv-card" data-delay="80">
+          <img
+            class="serv-card-img"
+            src="https://raw.githubusercontent.com/basiliopedro/clinica-sapicar/main/img/urologia.jpg"
+            alt="Urologia"
+          >
+          <div class="serv-card-body">
+            <h3>Urologia</h3>
+            <p>Diagnóstico e tratamento de patologias do aparelho urinário e sistema reprodutor masculino.</p>
+            <a href="https://wa.me/244931850810?text=Olá%2C%20gostaria%20de%20marcar%20consulta%20de%20Urologia" target="_blank" class="btn-wa">
+              <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Marcar consulta
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- LOCALIZAÇÃO -->
+<section id="localizacao">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">Como chegar</span>
+      <h2 class="section-title">Localização</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-info">
+        <div class="loc-item reveal">
+          <div class="loc-item-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="loc-item-text">
+            <h4>Endereço</h4>
+            <p>Bairro 71, junto ao Hospital Municipal de Benguela</p>
+            <p>Benguela, Angola</p>
+          </div>
+        </div>
+        <div class="loc-item reveal">
+          <div class="loc-item-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.7A2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l1.46-1.46a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+          </div>
+          <div class="loc-item-text">
+            <h4>Contacto directo</h4>
+            <a href="tel:+244931850810">+244 931 850 810</a>
+            <a href="tel:+244952440559">+244 952 440 559</a>
+          </div>
+        </div>
+        <div class="loc-item reveal">
+          <div class="loc-item-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="loc-item-text">
+            <h4>Horário</h4>
+            <p>Todos os dias · 24 horas / 7 dias</p>
+          </div>
+        </div>
+      </div>
+      <div class="loc-map reveal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15657.05!2d13.4082!3d-12.5763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a3fbe44d8b1b79f%3A0x7a8a2b6f6e5c3d1a!2sHospital%20Municipal%20de%20Benguela!5e0!3m2!1spt!2sao!4v1700000000000"
+          allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Localização Centro Médico Sapicar, Benguela">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="contacto-inner">
+    <div class="contacto-text reveal">
+      <span class="section-tag">Fale connosco</span>
+      <h2 class="section-title">Marque a sua consulta hoje</h2>
+      <p class="section-sub">Entre em contacto directamente pelo telefone ou WhatsApp. A nossa equipa está pronta para o atender.</p>
+    </div>
+    <div class="contacto-cards">
+      <a href="https://wa.me/244931850810?text=Olá%2C%20gostaria%20de%20marcar%20uma%20consulta%20no%20Centro%20Médico%20Sapicar" target="_blank" class="contact-card reveal">
+        <div class="contact-icon">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div class="contact-details">
+          <div class="contact-type">WhatsApp</div>
+          <div class="contact-number">+244 931 850 810</div>
+        </div>
+        <div class="contact-arrow">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </a>
+      <a href="tel:+244931850810" class="contact-card reveal">
+        <div class="contact-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.7A2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l1.46-1.46a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+        </div>
+        <div class="contact-details">
+          <div class="contact-type">Telefone</div>
+          <div class="contact-number">+244 931 850 810</div>
+        </div>
+        <div class="contact-arrow">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </a>
+      <a href="tel:+244952440559" class="contact-card reveal">
+        <div class="contact-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.7A2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l1.46-1.46a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+        </div>
+        <div class="contact-details">
+          <div class="contact-type">Telefone alternativo</div>
+          <div class="contact-number">+244 952 440 559</div>
+        </div>
+        <div class="contact-arrow">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img
+        src="https://raw.githubusercontent.com/basiliopedro/clinica-sapicar/main/img/logo-sapicar.png"
+        alt="Centro Médico Sapicar"
+      >
+    </div>
+    <div class="footer-mid">
+      <p>Bairro 71 · junto ao Hospital Municipal de Benguela</p>
+      <a href="tel:+244931850810">+244 931 850 810</a>
+    </div>
+    <div class="footer-right">
+      <p>© 2026 Centro Médico Sapicar</p>
+      <p style="margin-top:4px">Todos os direitos reservados</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileNav.classList.toggle('open');
+  });
+  function closeMobileNav() {
+    hamburger.classList.remove('active');
+    mobileNav.classList.remove('open');
+  }
+
+  // Scroll reveal — secções gerais
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Scroll reveal — cards de serviço com delay
+  const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const delay = entry.target.dataset.delay || 0;
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, parseInt(delay));
+        cardObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.serv-card').forEach(el => cardObserver.observe(el));
+</script>
+</body>
+</html>
